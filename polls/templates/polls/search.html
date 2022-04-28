@@ -1,0 +1,26 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+<div class="list-group test">
+
+    {% if questions %}
+
+        <!-- list of search questions -->
+        {% for question in questions %}
+            <a href="{% url 'polls:detail' question.id %}" class="list-group-item list-group-item-action flex-column align-items-start test">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ question.question_text }}</h5>
+                <small class="text-muted">{{ question.pub_date }}</small>
+            </div>
+            <p class="mb-1">{{ question.question_description }}</p>
+             <!-- future implementation <small class="text-muted">most voted</small> -->
+            </a>
+        {% endfor %}
+
+    {% else %}
+
+        <!-- if list is empty -->
+        <p>We couldn't find results.</p>
+    {% endif %}
+</div>
+{% endblock content %}

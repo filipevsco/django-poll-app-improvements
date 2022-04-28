@@ -1,0 +1,30 @@
+{% load static %}<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{% static 'polls/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+        
+        {% block stylesheet %}{% endblock stylesheet %}
+
+        <title>Polls</title>
+    </head>
+    <body>
+        {% block body %}
+        <nav class="navbar navbar-dark bg-dark p-2">
+            <a class="navbar-brand" href="{% url 'polls:index' %}">Polls</a>
+            <form class="form-inline d-flex" action="{% url 'polls:search' %}">
+                <input class="form-control" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </nav>
+        
+        <!-- templates -->
+        {% block content %}{% endblock content %}
+        
+        {% endblock body %}
+        <script src="{% static 'polls/js/bootstrap.min.js' %}"></script>    
+    </body>
+</html>

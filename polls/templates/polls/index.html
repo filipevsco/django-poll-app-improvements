@@ -1,0 +1,26 @@
+{% extends 'polls/base.html' %}
+
+    {% block content %}
+    <div class="list-group test">
+
+        {% if latest_question_list %}
+
+            <!-- list of lastest questions -->
+            {% for question in latest_question_list %}
+                <a href="{% url 'polls:detail' question.id %}" class="list-group-item list-group-item-action flex-column align-items-start test">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ question.question_text }}</h5>
+                    <small class="text-muted">{{ question.pub_date }}</small>
+                </div>
+                <p class="mb-1">{{ question.question_description }}</p>
+                <!-- future implementation <small class="text-muted">most voted</small> -->
+                </a>
+            {% endfor %}
+
+        {% else %}
+
+            <!-- if list is empty -->
+            <p>No polls are avaliable.</p>
+        {% endif %}
+    </div>
+    {% endblock content %}
