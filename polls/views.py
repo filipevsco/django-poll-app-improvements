@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 class IndexView(generic.ListView):
-    template_name = 'polls/index.html'  #por padrao Django busca 'app_name/<model_name>_list.html', como nao usamos esse nome no html precicasmos especificar.
+    template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
